@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Victor Nievas</title>
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 flex justify-between items-center p-6 bg-red-600 shadow-lg z-50">
+      <a href="#inicio" class="text-xl font-bold text-white">V<span href="#inicio" class="text-yellow-400">N</span></a>
+      <nav class="flex space-x-6 text-m text-white">
+        <a href="#habilidades" class="hover:text-yellow-400 transition-colors">Habilidades</a>
+        <a href="#proyectos" class="hover:text-yellow-400 transition-colors">Proyectos</a>
+        <a href="#experiencia" class="hover:text-yellow-400 transition-colors">Experiencia laboral</a>
+        <a href="#titulaciones" class="hover:text-yellow-400 transition-colors">Titulaciones</a>
+        <a href="mailto:victorquentar@gmail.com" class="hover:text-yellow-400 font-bold transition-colors">victorquentar@gmail.com</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto py-20 px-6 pt-32">
+      <!-- Left content -->
+      <div class="md:w-1/2 space-y-4" data-aos="zoom-in" data-aos-duration="1000">
+        <p class="text-sm bg-red-100 text-red-700 w-fit px-3 py-1 rounded-full mt-2">¡Hola! Soy yo</p>
+        <h1 class="text-4xl font-bold">Victor Nievas</h1>
+        <h2 class="text-md text-red-600 font-semibold uppercase">Ingeniero Informático | Desarrollador Full Stack</h2>
+        <p class="text-gray-700">
+          Apasionado por crear aplicaciones completas con tecnologías modernas. Experiencia en desarrollo web, diseño de interfaces y despliegue de soluciones escalables.
+        </p>
+        <!-- Social Links -->
+        <div class="flex space-x-4 mt-4">
+          <a href="https://github.com/VictorNievas" target="_blank" aria-label="GitHub">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" class="w-8 h-8" alt="GitHub" />
+          </a>
+          <a href="https://linkedin.com/in/victor-nievas-heredia-914225320/" target="_blank" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" class="w-8 h-8" alt="LinkedIn" />
+          </a>
+          <a href="mailto:victorquentar@gmail.com" aria-label="Email">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" class="w-8 h-8" alt="Email" />
+          </a>
+        </div>
+        <!-- Call to action -->
+        <a href="public/images/1734944482114.jpg" download class="inline-block mt-6 bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors">
+          Descargar CV
+        </a>
+      </div>
+      
+      <!-- Right content -->
+      <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center" data-aos="flip-left" data-aos-duration="1000">
+        <img src="/images/1734944482114.jpg" alt="Victor Ilustrado" class="w-72 h-72 object-cover rounded-full shadow-lg" />
+      </div>
+    </section>
+
+    <!-- Sección de Skills con logos y estrellas -->
+    <section id="habilidades" class="bg-gray-50 py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Habilidades</h2>
+
+        {% for categoria in habilidades %}
+        <div class="mb-12" data-aos="fade-up" data-aos-duration="1000">
+          <h3 class="text-2xl font-semibold mb-6 {{ categoria.color }}">
+            {{ categoria.icon }} {{ categoria.nombre }}
+          </h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for habilidad in categoria.items %}
+            <div class="flex items-center space-x-4">
+              <img src="{{ habilidad.icono }}" class="w-8 h-8" alt="{{ habilidad.nombre }}">
+              <span>{{ habilidad.nombre }}</span>
+              <div class="text-yellow-400">{{ habilidad.nivel }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="proyectos" class="bg-gray-100 py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Proyectos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for proyecto in proyectos %}
+          <div
+            class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-transform transform"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="{{ loop.index0 | int * 200 }}"
+          >
+            <img src="{{ proyecto.imagen }}" alt="{{ proyecto.nombre }}" class="w-full h-48 object-contain rounded-t-lg mb-4" />
+
+            <h3 class="text-xl font-bold mb-2 text-center">{{ proyecto.nombre }}</h3>
+            <p class="text-gray-600 mb-4 text-center">
+              {{ proyecto.descripcion }}
+            </p>
+            <!-- Tecnologías -->
+            <h4 class="font-semibold text-center mb-2">Tecnologias empleadas:</h4>
+            <div class="flex items-center space-x-3 mb-4 justify-center">
+              {% for tech in proyecto.tecnologias %}
+              <img src="{{ tech }}" alt="Tecnología" class="w-8 h-8" />
+              {% endfor %}
+            </div>
+
+            <!-- Enlaces -->
+            <h4 class="font-semibold text-center mb-2">Enlaces:</h4>
+            <div class="flex space-x-4 justify-center">
+              <a href="{{ proyecto.linkedin }}" target="_blank" title="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-8 h-8 hover:opacity-75" />
+              </a>
+              <a href="{{ proyecto.github }}" target="_blank" title="GitHub">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-8 h-8 hover:opacity-75" />
+              </a>
+              <a href="{{ proyecto.url }}" target="_blank" title="Web del proyecto">
+                <img src="https://img.icons8.com/ios-filled/50/000000/internet--v1.png" alt="Web" class="w-8 h-8 hover:opacity-75" />
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+        <!-- Job Section -->
+    <section id="experiencia" class="bg-white py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Experiencia laboral</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for experiencia in experiencias %}
+          <div
+            class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="{{ loop.index0 | int * 200 }}"
+          >
+            <img src="{{ experiencia.imagen }}" alt="{{ experiencia.nombre }}" class="w-full h-48 object-cover rounded-t-lg mb-4" />
+
+            <h3 class="text-xl font-bold mb-2 text-center">{{ experiencia.nombre }}</h3>
+            <p class="text-gray-600 mb-4 text-center">
+              {{ experiencia.descripcion }}
+            </p>
+            <!-- Tecnologías -->
+            <h4 class="font-semibold text-center mb-2">Tecnologias empleadas:</h4>
+            <div class="flex items-center space-x-3 mb-4 justify-center">
+              {% for tech in experiencia.tecnologias %}
+              <img src="{{ tech }}" alt="Tecnología" class="w-8 h-8" />
+              {% endfor %}
+            </div>
+
+            <!-- Tiempo -->
+            <div class="flex items-center mb-4 justify-center">
+              {% for tech in experiencia.fecha %}
+              <p class="text-gray-600 mb-4 text-center">
+              {{ tech }}
+              </p>
+              {% endfor %}
+            </div>
+
+            <!-- Enlaces -->
+            <div class="flex space-x-4 justify-center">
+              <a href="{{ experiencia.linkedin }}" target="_blank" title="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-8 h-8 hover:opacity-75" />
+              </a>
+              <a href="{{ experiencia.url }}" target="_blank" title="Web del proyecto">
+                <img src="https://img.icons8.com/ios-filled/50/000000/internet--v1.png" alt="Web" class="w-8 h-8 hover:opacity-75" />
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="titulaciones" class="bg-gray-100 py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-center text-gray-900">Titulaciones</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {% for titulacion in titulaciones %}
+          <div
+            class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="{{ loop.index0 | int * 200 }}"
+          >
+            <img src="{{ titulacion.imagen }}" alt="{{ titulacion.nombre }}" class="w-full h-48 object-contain rounded-t-lg mb-4" />
+
+            <h3 class="text-xl font-bold mb-2 text-center">{{ titulacion.nombre }}</h3>
+            <h4 class="text-l font-bold mb-2 text-center">{{ titulacion.institucion }}</h4>
+            <!-- Tiempo -->
+            <div class="flex items-center mb-4 justify-center">
+              {% for tech in titulacion.fecha %}
+              <p class="text-gray-600 mb-4 text-center">
+              {{ tech }}
+              </p>
+              {% endfor %}
+            </div>
+
+            <!-- Botón de ver credencial -->
+            <div class="flex justify-center mt-4">
+              <a href="{{ titulacion.credencial }}" target="_blank" class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">
+                Ver credencial
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/3.2.3/nunjucks.min.js"></script>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
