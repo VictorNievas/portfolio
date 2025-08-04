@@ -93,6 +93,19 @@ const proyectos = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
     ]
   },
+  {
+    nombre: "SantiagoExplorer",
+    imagen: "/images/santiago.webp", 
+    descripcion: "Santiago Explorer es una aplicación web interactiva para seguir y compartir tu experiencia en el Camino de Santiago, con rutas, etapas, logros, fotos y una comunidad de peregrinos.", 
+    linkedin: "https://www.linkedin.com/in/victor-nievas-heredia-914225320/details/projects/urn:li:fsd_profileProject:(ACoAAFEw4OABf5xHGJc3U2oRXSELtWRaxKVUKyI,1952292645)/treasury/", 
+    github: "https://github.com/VictorNievas/SantiagoExplorer", 
+    url: "https://santiago-explorer.onrender.com/", 
+    tecnologias: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+    ]
+  },
 ];
 
 const experiencias = [
