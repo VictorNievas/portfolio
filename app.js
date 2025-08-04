@@ -132,7 +132,7 @@ const titulaciones = [
     imagen: "https://secretariageneral.ugr.es/sites/webugr/secretariageneral/public/inline-files/UGR-MARCA-01-color.svg",
     institucion: "Universidad de Granada",
     fecha: "Sep 2020 - Jun 2025",
-    credencial: "https://www.ugr.es/"
+    credencial: "https://drive.google.com/file/d/1XhentY7x1SNRI7GJU99S7AYizlwvz0Lb/view?usp=sharing"
   },
   {
     nombre: "Certificado de nivel B2 en Inglés",
